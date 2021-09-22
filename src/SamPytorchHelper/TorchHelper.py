@@ -5,9 +5,6 @@ import torchvision
 
 class TorchHelperClass:
     def __init__(self, model, loss_function, optimizer, comment=''):
-        # Data
-        self.train_dataloader = []
-        self.val_dataloader = []
 
         # Network
         self.model = model
@@ -30,16 +27,14 @@ class TorchHelperClass:
         :param val_dataloader: validation set
         :param num_epoch: the total number of epochs. default = 50
         :param iter_print: indicate when to print the loss after how many iteration. default = 100
-        :return: trained model
+        :return: current trained model
         """
-        self.train_dataloader = train_dataloader
-        self.val_dataloader = val_dataloader
         self.epochs = num_epoch
         print(f'------ Training Initiated - device: {self.device}----')
         for epoch in range(self.epochs):
             print(f"Epoch {epoch + 1}")
-            self._train(self.train_dataloader, self.model, self.loss_function, self.optimizer, iter_print, epoch)
-            self._test(self.val_dataloader, self.model, self.loss_function, epoch)
+            self._train(train_dataloader, self.model, self.loss_function, self.optimizer, iter_print, epoch)
+            self._test(val_dataloader, self.model, self.loss_function, epoch)
         print("------- Training finished ----------------------------")
         self.writer.close()
         return self.model
@@ -48,6 +43,7 @@ class TorchHelperClass:
         total_loss = 0
         total_correct = 0
         size = len(dataloader.dataset)
+        batch_size = len(dataloader)
         model.train()
         for batch, (X, y) in enumerate(dataloader):
             X, y = X.to(self.device), y.to(self.device)
@@ -67,9 +63,10 @@ class TorchHelperClass:
             if batch % iter_print == 0:
                 loss, current = loss.item(), batch * len(X)
                 print(f"  [iter {current:>5d}/{size:>5d}] --> Loss: {loss:>7f} ")
-        self.writer.add_scalar("Loss", total_loss, epoch)
-        self.writer.add_scalar("Correct", total_correct, epoch)
-        self.writer.add_scalar("Accuracy", total_correct / size, epoch)
+        self.writer.add_scalar("Correct Instances per epoch", total_correct, epoch+1)
+        self.writer.add_scalar("Avg Loss per epoch", total_loss/batch_size, epoch+1)
+        self.writer.add_scalar("Training accuracy per epoch", total_correct / size, epoch+1)
+        self.writer.close()
 
     def _get_num_correct(self, pred, labels):
         return pred.argmax(dim=1).eq(labels).sum().item()
@@ -87,8 +84,9 @@ class TorchHelperClass:
                 correct += self._get_num_correct(pred, y)
         test_loss /= num_batches
         correct /= size
-        print(f" Validation error: \n"
+        print(f" Validation : \n"
               f"  [epoch {epoch+1}/{self.epochs}]--> Accuracy: {(100 * correct):>0.1f}%, --> Avg loss: {test_loss:>8f}")
+        self.writer.add_scalar("Validation accuracy per epoch", correct, epoch+1)
 
     def save_model(self, path):
         """
