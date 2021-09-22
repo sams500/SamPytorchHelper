@@ -100,5 +100,4 @@ It is used for network hyper-parameters tuning where each parameter can have one
 ### From Tensorboard 
 ![tensorboard](./test/pic/tensorboard.png)
 
-![loss](./test/pic/loss.png) ![training](./test/pic/training.png) ![validation](./test/pic/validation.png
-)
+![loss](./test/pic/loss.png) ![training](./test/pic/training.png) ![validation](./test/pic/validation.png)
