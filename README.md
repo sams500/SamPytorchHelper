@@ -96,7 +96,7 @@ It is used for network hyper-parameters tuning where each parameter can have one
 
 ### From the Terminal
 
-![terminal](./test/pic/terminal.jpg)
+![terminal](./test/pic/terminal.jpg?raw=true)
 
 ### From Tensorboard 
 ![tensorboard](./test/pic/tensorboard.png)
