@@ -95,10 +95,10 @@ It is used for network hyper-parameters tuning where each parameter can have one
 ## Results after running test.py
 
 ### From the Terminal
+
 ![terminal](./test/pic/terminal.jpg)
 
 ### From Tensorboard 
 ![tensorboard](./test/pic/tensorboard.png)
 
-![loss](./test/pic/loss.png) ![training](./test/pic/training.png) ![validation](./test/pic/validation.png
-)
+![loss](./test/pic/loss.png) ![training](./test/pic/training.png) ![validation](./test/pic/validation.png)
