@@ -95,7 +95,7 @@ It is used for network hyper-parameters tuning where each parameter can have one
 ## Results after running test.py
 
 ### From the Terminal
-![terminal](./test/pic/terminal.png)
+<img src="./test/pic/terminal.jpg" width="800"/> ![terminal](./test/pic/terminal.jpg)
 
 ### From Tensorboard 
 ![tensorboard](./test/pic/tensorboard.png)
