@@ -5,17 +5,16 @@ import torchvision
 
 class TorchHelperClass:
     def __init__(self, model, loss_function, optimizer, comment=''):
+        self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
         # Network
-        self.model = model
+        self.model = model.to(self.device)
 
         # loss and optimizer functions
         self.loss_function = loss_function
         self.optimizer = optimizer
 
         self.epochs = 0
-
-        self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
         # Tensorboard
         self.writer = SummaryWriter(comment=comment)
@@ -63,8 +62,7 @@ class TorchHelperClass:
             if batch % iter_print == 0:
                 loss, current = loss.item(), batch * len(X)
                 print(f"  [iter {current:>5d}/{size:>5d}] --> Loss: {loss:>7f} ")
-        self.writer.add_scalar("Correct Instances per epoch", total_correct, epoch+1)
-        self.writer.add_scalar("Avg Loss per epoch", total_loss/batch_size, epoch+1)
+        self.writer.add_scalar("Training loss per epoch", total_loss/batch_size, epoch+1)
         self.writer.add_scalar("Training accuracy per epoch", total_correct / size, epoch+1)
         self.writer.close()
 
@@ -87,6 +85,7 @@ class TorchHelperClass:
         print(f" Validation : \n"
               f"  [epoch {epoch+1}/{self.epochs}]--> Accuracy: {(100 * correct):>0.1f}%, --> Avg loss: {test_loss:>8f}")
         self.writer.add_scalar("Validation accuracy per epoch", correct, epoch+1)
+        self.writer.add_scalar("Validation loss per epoch", test_loss, epoch+1)
 
     def save_model(self, path):
         """
