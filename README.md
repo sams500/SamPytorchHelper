@@ -95,12 +95,10 @@ It is used for network hyper-parameters tuning where each parameter can have one
 ## Results after running test.py
 
 ### From the Terminal
-![terminal](https://user-images.githubusercontent.com/68144408/134659179-2c972481-d60a-4bac-b0b2-0e253cace7cc.jpg)
+![terminal](./test/pic/terminal.jpg)
 
 ### From Tensorboard 
-![tensorboard](test/pic/tensorboard.jpg)
+![tensorboard](./test/pic/tensorboard.png)
 
-![train acc](test/pic/train%20accuracy.jpg) ![train loss](test/pic/train%20loss.jpg) 
-
-![val acc](test/pic/validation%20accuracy.jpg)![val los](test/pic/validation%20loss.jpg)
-
+![loss](./test/pic/loss.png) ![training](./test/pic/training.png) ![validation](./test/pic/validation.png
+)
