@@ -42,7 +42,7 @@ if __name__ == '__main__':
     test_data = datasets.FashionMNIST(root='data', train=False, download=True, transform=ToTensor())
 
     param_values = [v for v in parameters.values()]
-    for id, (lr, batch, shuffle, epochs, momentum) in enumerate(product(*param_values)):
+    for id, (lr, batch, shuffle, epochs, momentum ) in enumerate(product(*param_values)):
         print("Current Hyperparams id:", id+1)
         train_dataloader = DataLoader(train_data, batch_size=batch, shuffle=shuffle)
         test_dataloader = DataLoader(test_data, batch_size=batch, shuffle=False)
