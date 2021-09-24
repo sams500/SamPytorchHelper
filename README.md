@@ -96,11 +96,11 @@ It is used for network hyper-parameters tuning where each parameter can have one
 
 ### From the Terminal
 
-![terminal](test/pic/terminal.jpg)
+![terminal](https://user-images.githubusercontent.com/68144408/134682328-7a96711a-846b-4027-9563-79a7347e0d0d.jpg)
 
 
 ### From Tensorboard 
-![tensorboard](test/pic/tensorboard.jpg) 
+![tensorboard](https://user-images.githubusercontent.com/68144408/134682345-7a53fa2b-21e8-4606-afb9-d90ae5e70ed2.jpg)
 
-![train acc](test/pic/train%20accuracy.jpg) ![train loss](test/pic/train%20loss.jpg) 
-![val acc](test/pic/validation%20accuracy.jpg) ![val loss](test/pic/validation%20loss.jpg)
+![train accuracy](https://user-images.githubusercontent.com/68144408/134682374-c1ce67ef-1843-49f4-a5c7-afd81ff71183.jpg) ![train loss](https://user-images.githubusercontent.com/68144408/134682402-06049529-8e23-489d-aee9-b326ae3e83e8.jpg)
+![validation accuracy](https://user-images.githubusercontent.com/68144408/134682426-76ca94f5-d4d6-4220-bece-39b6fa58ee44.jpg) ![validation loss](https://user-images.githubusercontent.com/68144408/134682435-7432766a-2cfc-40bc-8675-4c602c7f9545.jpg)
