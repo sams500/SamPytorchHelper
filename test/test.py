@@ -11,10 +11,10 @@ from TorchHelper import TorchHelperClass
 
 # hyper-parameters
 parameters = dict(
-    lr=[0.01, 0.001],
-    batch=[32, 64, 128],
+    lr=[0.01],  # [0.01, 0.001],
+    batch=[32], # [64, 128],
     shuffle=[True],
-    epochs=[10, 20],
+    epochs=[1], #[10, 20],
     momentum=[0.9]
     )
 
